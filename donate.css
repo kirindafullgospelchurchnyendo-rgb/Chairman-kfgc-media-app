@@ -1,0 +1,106 @@
+/* ===============================
+   DONATE PAGE STYLES
+=============================== */
+body {
+    margin-top: 80px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.back-button {
+    position: absolute;
+    left: 10px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 50px;
+}
+
+
+/* Donation Container */
+.donation-container {
+    background-color: white;
+    max-width: 600px;
+    margin: 20px auto 80px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.donation-container h2 {
+    color: #333;
+}
+
+.donation-container p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Donation Form */
+.donation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.donation-form input,
+.donation-form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.donate-btn {
+    background-color: gold;
+    color: #0A1A44;
+    font-size: 18px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.donate-btn:hover {
+    background-color: #e6c200;
+}
+
+/* Payment Options */
+.payment-options img {
+    width: 50px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.payment-options img:hover {
+    transform: scale(1.2);
+}
+
+/* QR Code */
+.qr-code img {
+    width: 150px;
+    margin-top: 10px;
+}
+
+/* Recent Donations */
+.recent-donations {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.recent-donations ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.recent-donations li {
+    background-color: #f1f1f1;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
