@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+<form id="prayer-form" action="javascript:void(0)" enctype="multipart/form-data">
 /* ---------------------------
    Persistent settings & UI
    --------------------------- */
