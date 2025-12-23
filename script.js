@@ -161,16 +161,51 @@ document.addEventListener('keydown', (evt) => {
 });
 
 /* ---------- Prayer form ---------- */
-document.getElementById('prayer-form')?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const request = document.getElementById('member-request').value.trim();
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("prayer-form");
+  const prayerBox = document.getElementById("prayer-request-form");
+  const thankYou = document.getElementById("thank-you-message");
 
-  if (request) {
-    alert('Thank you! Your prayer request has been submitted.');
-    event.target.reset();
-  } else {
-    alert('Please write your prayer request before submitting.');
-  }
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbwipen4FVEMNAfL4IyaG_XLV1v0GgvRZUMRs3tK3FBXzRLbZtwIdvaMTEiB6-23G2mgWg/exec";
+
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      name: document.getElementById("member-name").value.trim(),
+      contact: document.getElementById("member-contact").value.trim(),
+      email: document.getElementById("member-email").value.trim(),
+      request: document.getElementById("member-request").value.trim()
+    };
+
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        prayerBox.style.display = "none";
+        thankYou.style.display = "block";
+        form.reset();
+      } else {
+        alert("❌ Submission failed. Try again.");
+        console.error(result.error);
+      }
+
+    } catch (err) {
+      alert("❌ Network error. Check internet.");
+      console.error(err);
+    }
+  });
 });
 
 /* ---------------------------
