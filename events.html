@@ -13,7 +13,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
 <!-- Main script -->
-  <script src="scripts.js" defer></script>
+
 </head>
 <body>
 
@@ -35,7 +35,9 @@
 <!-- Events Section -->
 <section class="events">
     <h2>Upcoming Events</h2>
-
+    <!-- Calendar -->
+    <div id="calendar"></div>
+</section>
     <!-- Search, Filter & Sort -->
     <div class="search-filter">
         <input type="text" id="searchInput" placeholder="Search events...">
@@ -51,9 +53,7 @@
     <!-- Event Cards -->
     <div class="event-cards" id="eventCards"></div>
 
-    <!-- Calendar -->
-    <div id="calendar"></div>
-</section>
+
 
 <!-- Registration Modal -->
 <div class="modal" id="registerModal">
@@ -78,8 +78,9 @@
     </p>
     <p>&copy; 2025 KFGC MEDIA APP. All Rights Reserved.</p>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-<script src="events.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js" defer></script>
+<script src="events.js" defer></script>
+  <script src="scripts.js" defer></script>
 </body>
-</html>
+          </html>
