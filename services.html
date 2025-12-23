@@ -100,7 +100,141 @@
         <p><strong>Time:</strong> Tuesdays, 5:00 PM - 7:00 PM</p>
         <a href="#" class="btn">Request Prayer</a>
 </div>
+<style>
 
+  /* ========== SERVICES CONTAINER ========== */
+.services-container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+.services-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #0b3d2e;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+/* ========== SERVICE BOX ========== */
+.service-box {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.service-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.service-box h3 {
+  padding: 15px 15px 5px;
+  color: #0b3d2e;
+  font-size: 20px;
+}
+
+.service-box p {
+  padding: 0 15px 10px;
+  font-size: 14.5px;
+  color: #444;
+}
+
+/* ========== PRAYER FORM ========== */
+.prayer-form {
+  padding: 20px 15px 25px;
+  background: #f9fafb;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 15px;
+}
+
+.prayer-form h5 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #0b3d2e;
+}
+
+/* Inputs */
+.prayer-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.prayer-form input,
+.prayer-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.prayer-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.prayer-form input:focus,
+.prayer-form textarea:focus {
+  border-color: #0b3d2e;
+  outline: none;
+}
+
+/* Submit Button */
+.prayer-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #0b3d2e;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.prayer-form button:hover {
+  background: #145c45;
+}
+
+/* ========== RESPONSIVE GRID ========== */
+@media (min-width: 768px) {
+  .services-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .services-container h2 {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .services-container h2 {
+    grid-column: span 3;
+  }
+  }
+</style>
 <!-- Footer -->
 <footer class="footer">
     <p>
