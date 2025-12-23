@@ -33,7 +33,7 @@ body {
 
 /* HERO SECTION */
 .hero img {
-    width: 100%;
+    width: 50%;
     height: 200px;
     object-fit: cover;
     border-bottom: 3px solid gold;
