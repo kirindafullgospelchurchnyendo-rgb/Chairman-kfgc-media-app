@@ -1,172 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services - Kirinda Full Gospel Church</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services - Kirinda Full Gospel Church</title>
 
-  <link rel="stylesheet" href="general-styles.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="general-styles.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <script defer>
-    async function submitPrayerForm(e) {
-      e.preventDefault();
+<script defer>
+async function submitPrayerForm(e) {
+  e.preventDefault();
 
-      alert("📨 Submitting prayer request...");
+  const payload = {
+    name: document.getElementById("member-name").value,
+    contact: document.getElementById("member-contact").value,
+    email: document.getElementById("member-email").value,
+    request: document.getElementById("member-request").value
+  };
 
-      const payload = {
-        name: document.getElementById("member-name").value,
-        contact: document.getElementById("member-contact").value,
-        email: document.getElementById("member-email").value,
-        request: document.getElementById("member-request").value
-      };
-
-      try {
-        const res = await fetch(
-          "https://script.google.com/macros/s/AKfycbwipen4FVEMNAfL4IyaG_XLV1v0GgvRZUMRs3tK3FBXzRLbZtwIdvaMTEiB6-23G2mgWg/exec",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          }
-        );
-
-        const data = await res.json();
-
-        if (data.success) {
-          document.getElementById("prayer-request-form").style.display = "none";
-          document.getElementById("thank-you-message").style.display = "block";
-          e.target.reset();
-        } else {
-          alert("❌ Server error");
-          console.error(data);
-        }
-
-      } catch (err) {
-        alert("❌ Network error");
-        console.error(err);
+  try {
+    const res = await fetch(
+      "https://script.google.com/macros/s/AKfycbwipen4FVEMNAfL4IyaG_XLV1v0GgvRZUMRs3tK3FBXzRLbZtwIdvaMTEiB6-23G2mgWg/exec",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
       }
+    );
 
-      return false;
-    }
-  </script>
+    const data = await res.json();
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      margin: 0;
-    }
-
-    .header {
-      background: #0b3d2e;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      color: #fff;
+    if (data.success) {
+      document.getElementById("prayer-request-form").style.display = "none";
+      document.getElementById("thank-you-message").style.display = "block";
+      e.target.reset();
+    } else {
+      alert("Server error. Please try again.");
+      console.error(data);
     }
 
-    .back-button {
-      color: #fff;
-      text-decoration: none;
-      margin-right: 15px;
-      font-size: 16px;
-    }
+  } catch (err) {
+    alert("Network error. Please check your connection.");
+    console.error(err);
+  }
 
-    .logo img {
-      height: 40px;
-    }
+  return false;
+}
+</script>
 
-    .services-container {
-      max-width: 1100px;
-      margin: 25px auto;
-      padding: 0 15px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
+<style>
+/* ========== SERVICES CONTAINER ========== */
+.services-container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
 
-    .services-container h2 {
-      grid-column: 1 / -1;
-      text-align: center;
-      color: #0b3d2e;
-    }
+.services-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #0b3d2e;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
 
-    .service-box {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,.1);
-      overflow: hidden;
-    }
+/* ========== SERVICE BOX ========== */
+.service-box {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .service-box img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+.service-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
 
-    .service-box h3 {
-      padding: 15px;
-      color: #0b3d2e;
-    }
+.service-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
 
-    .service-box p {
-      padding: 0 15px 10px;
-      color: #444;
-      font-size: 14px;
-    }
+.service-box h3 {
+  padding: 15px 15px 5px;
+  color: #0b3d2e;
+  font-size: 20px;
+}
 
-    .btn {
-      margin: 10px 15px 20px;
-      display: inline-block;
-      padding: 10px;
-      background: #0b3d2e;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      text-decoration: none;
-      cursor: pointer;
-    }
+.service-box p {
+  padding: 0 15px 10px;
+  font-size: 14.5px;
+  color: #444;
+}
 
-    .btn:hover {
-      background: #145c45;
-    }
+.btn {
+  display: inline-block;
+  margin: 10px 15px 15px;
+  padding: 10px 15px;
+  background: #0b3d2e;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
 
-    .prayer-form {
-      padding: 15px;
-      background: #f9fafb;
-      border-top: 1px solid #ddd;
-    }
+.btn:hover {
+  background: #145c45;
+}
 
-    .prayer-form label {
-      font-weight: bold;
-      font-size: 13px;
-    }
+/* ========== PRAYER FORM ========== */
+.prayer-form {
+  padding: 20px 15px 25px;
+  background: #f9fafb;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 15px;
+}
 
-    .prayer-form input,
-    .prayer-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0 15px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
+.prayer-form h5 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #0b3d2e;
+}
 
-    .footer {
-      background: #0b3d2e;
-      color: #fff;
-      text-align: center;
-      padding: 20px 10px;
-      margin-top: 30px;
-    }
+.prayer-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
 
-    .footer a {
-      color: #a5ffd6;
-      text-decoration: none;
-      margin: 0 5px;
-    }
-  </style>
+.prayer-form input,
+.prayer-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.prayer-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.prayer-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #0b3d2e;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* ========== GRID ========== */
+@media (min-width: 768px) {
+  .services-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .services-container h2 {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .services-container h2 {
+    grid-column: span 3;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -179,43 +199,82 @@
 </header>
 
 <div class="services-container">
-  <h2>OUR SERVICES</h2>
+<h2>OUR SERVICES</h2>
 
-  <div class="service-box">
-    <img src="prayer.jpg" alt="Prayer">
-    <h3>Prayer & Intercession</h3>
-    <p><strong>Time:</strong> Tuesdays, 5:00 PM – 7:00 PM</p>
+<!-- Sunday -->
+<div class="service-box">
+  <img src="sunday.jpg">
+  <h3>Sunday Worship Service</h3>
+  <p>Join us every Sunday for worship, prayer, and the Word of God.</p>
+  <p><strong>Time:</strong> 9:00 AM – 7:00 PM</p>
+  <a href="sermons.html" class="btn">Join Us</a>
+</div>
 
-    <button class="btn" onclick="document.getElementById('prayer-request-form').scrollIntoView({behavior:'smooth'})">
-      Request Prayer
-    </button>
+<!-- Midweek -->
+<div class="service-box">
+  <img src="midweek.jpg">
+  <h3>Midweek Fellowship</h3>
+  <p>Prayer, teaching, and worship.</p>
+  <p><strong>Time:</strong> Wednesday & Friday, 3:00 – 5:00 PM</p>
+  <a href="sermons.html#slide" class="btn">Watch Live</a>
+</div>
 
-    <div class="prayer-form" id="prayer-request-form">
-      <h4>Submit Your Prayer Request</h4>
+<!-- Youth -->
+<div class="service-box">
+  <img src="youths.jpg">
+  <h3>Youth Fellowship</h3>
+  <p>Empowering the next generation through the Word.</p>
+  <p><strong>Time:</strong> Sundays, 4:00 – 6:00 PM</p>
+  <a href="sermons.html#slide2" class="btn">Learn More</a>
+</div>
 
-      <form id="prayer-form" onsubmit="return submitPrayerForm(event)">
-        <label>Full Name (optional)</label>
-        <input type="text" id="member-name">
+<!-- Bible Study -->
+<div class="service-box">
+  <img src="bible study.jpg">
+  <h3>Bible Study & Discipleship</h3>
+  <p>Grow deeper in your faith.</p>
+  <p><strong>Time:</strong> Fridays, 6:00 – 8:00 PM</p>
+</div>
 
-        <label>Contact (optional)</label>
-        <input type="tel" id="member-contact">
+<!-- Prayer -->
+<div class="service-box">
+  <img src="prayer.jpg">
+  <h3>Prayer & Intercession</h3>
+  <p>Intercessory prayer for individuals and the church.</p>
+  <p><strong>Time:</strong> Tuesdays, 5:00 – 7:00 PM</p>
 
-        <label>Email (optional)</label>
-        <input type="email" id="member-email">
+  <button class="btn" onclick="document.getElementById('prayer-request-form').scrollIntoView({behavior:'smooth'})">
+    Request Prayer
+  </button>
 
-        <label>Your Prayer Request</label>
-        <textarea id="member-request" required></textarea>
+  <div class="prayer-form" id="prayer-request-form">
+    <h5>SUBMIT YOUR PRAYER REQUEST</h5>
 
-        <button type="submit" class="btn">Submit Request</button>
-      </form>
-    </div>
+    <form onsubmit="return submitPrayerForm(event)">
+      <label>Full Name (optional)</label>
+      <input id="member-name">
+
+      <label>Telephone (optional)</label>
+      <input id="member-contact">
+
+      <label>Email (optional)</label>
+      <input id="member-email">
+
+      <label>Your Prayer Request</label>
+      <textarea id="member-request" required></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
   </div>
+</div>
 
-  <div class="service-box" id="thank-you-message" style="display:none;">
-    <img src="prayer.jpg" alt="Prayer">
-    <h3>THANK YOU</h3>
-    <p>Your prayer request has been received. Our prayer team is praying for you.</p>
-  </div>
+<!-- THANK YOU -->
+<div class="service-box" id="thank-you-message" style="display:none;">
+  <img src="prayer.jpg">
+  <h3>THANK YOU</h3>
+  <p>Your prayer request has been received. Our prayer team is praying for you.</p>
+</div>
+
 </div>
 
 <footer class="footer">
@@ -226,8 +285,8 @@
     <a href="https://t.me/+wJRnn7SQvehhZTFk">Telegram</a> |
     <a href="https://www.tiktok.com/@kirindafullgospel">TikTok</a>
   </p>
-  <p>© 2025 KFGC MEDIA APP</p>
+  <p>&copy; 2025 KFGC MEDIA APP</p>
 </footer>
 
 </body>
-  </html>
+        </html>
