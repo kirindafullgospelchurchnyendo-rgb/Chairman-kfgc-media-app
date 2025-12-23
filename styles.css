@@ -312,6 +312,11 @@ body{
   .footer-inner { padding: 6px 12px; gap:8px; }
 }
 
+        .service-box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
 /* Opened mobile nav */
 .primary-nav.open{
   position: absolute;
