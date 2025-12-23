@@ -1,91 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Donate - KFGC MEDIA APP</title>
-<link rel="stylesheet" href="general-styles.css">
-<link rel="stylesheet" href="donate.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate | KFGC Media App</title>
 
-<!-- Main script -->
-  <script src="script.js" defer></script> 
+  <!-- Styles -->
+  <link rel="stylesheet" href="general-styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="donate.css" />
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
 
-<!-- Header -->
+<!-- HEADER -->
 <header class="header">
-    <a href="javascript:history.back()" class="back-button">← Back</a>
-    <div class="logo">
-        <img src="kfgc.jpg" alt="Church Logo">
-    </div>
-  
-   
+  <a href="javascript:history.back()" class="back-button">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+  <div class="logo">
+    <img src="kfgc.jpg" alt="Kirinda Full Gospel Church Logo" />
+  </div>
+ 
 </header>
 
-<!-- Donation Section -->
+<!-- MAIN -->
 <main class="donation-container">
-   <h1>*******************</h1>
-   <h1>Make a Donation</h1>
-    <h2>Support Our Ministry</h2>
-    <p>Thank you for contributing to the work of God through Kirinda Full Gospel Church. Your generosity makes a difference!</p>
 
+  <!-- Intro -->
+  <section class="donation-intro">
+    <h1>Make a Donation</h1>
+    <h2>Support the Work of God</h2>
+    <p>
+      Thank you for partnering with <strong>Kirinda Full Gospel Church</strong>.
+      Your giving helps spread the Gospel and support ministry activities.
+    </p>
+  </section>
+
+  <!-- Donation Form -->
+  <section class="donation-section">
     <form class="donation-form" id="donation-form">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <select name="donation-type" required>
-            <option value="" disabled selected>Select Donation Type</option>
-            <option value="tithe">Tithe</option>
-            <option value="offering">Offering</option>
-            <option value="seed">Seed</option>
-            <option value="custom">Other</option>
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="donation-type">Donation Type</label>
+        <select id="donation-type" name="donation-type" required>
+          <option value="" disabled selected>Select Donation Type</option>
+          <option value="tithe">Tithe</option>
+          <option value="offering">Offering</option>
+          <option value="seed">Seed</option>
+          <option value="construction">Construction</option>
+          <option value="other">Other</option>
         </select>
-        <input type="number" name="amount" placeholder="Amount (UGX)" required>
+      </div>
 
-        <h3>Payment Method</h3>
+      <div class="form-group">
+        <label for="amount">Amount (UGX)</label>
+        <input type="number" id="amount" name="amount" placeholder="e.g. 50000" required />
+      </div>
+
+      <!-- Payment Methods -->
+      <div class="payment-methods">
+        <h3>Select Payment Method</h3>
         <div class="payment-options">
-            <img src="momo.jpg" alt="Mobile Money" title="Mobile Money">
-            <img src="credit-card.jpg" alt="Credit Card" title="Credit Card">
-            <img src="paypal.jpg" alt="PayPal" title="PayPal">
+
+          <div class="payment-card">
+            <input type="radio" name="payment-method" value="momo" id="momo" required hidden />
+            <label for="momo">
+              <img src="momo.jpg" alt="Mobile Money" />
+              <span>Mobile Money</span>
+            </label>
+          </div>
+
+          <div class="payment-card">
+            <input type="radio" name="payment-method" value="card" id="card" required hidden />
+            <label for="card">
+              <img src="credit-card.jpg" alt="Credit Card" />
+              <span>Card</span>
+            </label>
+          </div>
+
+          <div class="payment-card">
+            <input type="radio" name="payment-method" value="paypal" id="paypal" required hidden />
+            <label for="paypal">
+              <img src="paypal.jpg" alt="PayPal" />
+              <span>PayPal</span>
+            </label>
+          </div>
+
         </div>
+      </div>
 
-        <button type="submit" class="btn donate-btn">Donate Now</button>
+      <button type="submit" class="btn donate-btn">
+        <i class="fas fa-hand-holding-heart"></i> Donate Now
+      </button>
     </form>
+  </section>
 
-    <!-- QR Code for Easy Payment -->
-    <div class="qr-code">
-        <h3>Scan to Donate</h3>
-        <img src="qr.jpg" alt="QR Code">
-    </div>
+  <!-- QR Code -->
+  <section class="qr-section">
+    <h3>Scan to Donate</h3>
+    <img src="qr.jpg" alt="Donation QR Code" class="qr-image" />
+    <p>Scan the QR code using Mobile Money or banking apps</p>
+  </section>
 
-    <!-- Recent Donations -->
-    <div class="recent-donations" id="recent-donations">
-        <h3>Recent Donations</h3>
-        <ul>
-            <li>John Doe - UGX 50,000</li>
-            <li>Mary A. - UGX 30,000</li>
-            <li>Anonymous - UGX 100,000</li>
-            <li>Anonymous - UGX 100,000</li>
-        </ul>
-    </div>
+  <!-- Recent Donations -->
+  <section class="recent-donations" id="recent-donations">
+    <h3>Recent Donations</h3>
+    <ul>
+          </ul>
+  </section>
+
 </main>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="footer">
-    <p>
-        Follow us on 
-        <a href="https://whatsapp.com/channel/0029VaoQRhnHwXb9FX0Ub503">WhatsApp</a> |
-        <a href="https://www.youtube.com/@KIRINDAFULLGOSPELCHURCHNYENDO">YouTube</a> |
-         <a href="https://www.facebook.com/profile.php?id=61579066273777">Facebook</a> | 
-        <a href="https://t.me/+wJRnn7SQvehhZTFk">Telegram</a> |
-        <a href="https://www.tiktok.com/@kirindafullgospel">TikTok</a>
-    </p>
-    <p>&copy; 2025 KFGC MEDIA APP. All Rights Reserved.</p>
+  <p class="social-links">
+    Follow us on
+    <a href="https://whatsapp.com/channel/0029VaoQRhnHwXb9FX0Ub503">WhatsApp</a> |
+    <a href="https://www.youtube.com/@KIRINDAFULLGOSPELCHURCHNYENDO">YouTube</a> |
+    <a href="https://www.facebook.com/profile.php?id=61579066273777">Facebook</a> |
+    <a href="https://t.me/+wJRnn7SQvehhZTFk">Telegram</a> |
+    <a href="https://www.tiktok.com/@kirindafullgospel">TikTok</a> |
+  </p>
+    <a href="admin.html">ADMIN</a> 
+  
+  <p>&copy; 2025 KFGC Media App. All Rights Reserved.</p>
 </footer>
 
-<script src="donate.js"></script>
+<!-- Firebase & Flutterwave Scripts -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<script src="donate.js" defer></script>
+<script src="script.js" defer></script>
+
 </body>
-</html>
+              </html>
