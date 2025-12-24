@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KFGC Prayer Request</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f7f6;
+  margin:0;
+}
+header{
+  background:#0b3d2e;
+  color:#fff;
+  padding:15px;
+  text-align:center;
+}
+.container{
+  max-width:500px;
+  margin:30px auto;
+  padding:15px;
+}
+.card{
+  background:#fff;
+  border-radius:10px;
+  padding:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+label{
+  font-weight:600;
+  font-size:14px;
+}
+input, textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0 15px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:#0b3d2e;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  font-size:15px;
+}
+button:disabled{
+  background:#999;
+}
+.msg{
+  text-align:center;
+  margin-top:12px;
+  display:none;
+}
+.success{color:green;}
+.error{color:red;}
+</style>
+</head>
+
+<body>
+
+<header>Kirinda Full Gospel Church</header>
+
+<div class="container">
+  <div class="card">
+    <h3>Submit Prayer Request</h3>
+
+    <form id="prayerForm">
+      <label>Name (optional)</label>
+      <input id="prayer_name" placeholder="Your name">
+
+      <label>Contact (optional)</label>
+      <input id="contact" placeholder="Phone number">
+
+      <label>Email (optional)</label>
+      <input id="email" placeholder="Email address">
+
+      <label>Prayer Request *</label>
+      <textarea id="request" required></textarea>
+
+      <button id="btn" type="submit">Submit Prayer</button>
+
+      <div class="msg success" id="ok">🙏 Prayer submitted successfully</div>
+      <div class="msg error" id="fail">❌ Submission failed</div>
+    </form>
+  </div>
+</div>
+
+<script>
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbxGuLzNgt_GNPRh2250O8HPD88sO0Y-MJV_vhcQ9zszjVTousiEL8RlT2zwje6Yx2jvkw/exec";
+
+const form = document.getElementById("prayerForm");
+const btn = document.getElementById("btn");
+const ok = document.getElementById("ok");
+const fail = document.getElementById("fail");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  ok.style.display = fail.style.display = "none";
+
+  btn.disabled = true;
+  btn.textContent = "Submitting...";
+
+  const payload = {
+    name: document.getElementById("prayer_name").value.trim(),
+    contact: document.getElementById("contact").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    "prayer request": document.getElementById("request").value.trim()
+  };
+
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      ok.style.display = "block";
+      form.reset();
+    } else {
+      fail.style.display = "block";
+      console.error(data.error);
+    }
+
+  } catch (err) {
+    console.error(err);
+    fail.style.display = "block";
+  }
+
+  btn.disabled = false;
+  btn.textContent = "Submit Prayer";
+});
+</script>
+
+</body>
+</html>
