@@ -9,46 +9,7 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-<script defer>
-async function submitPrayerForm(e) {
-  e.preventDefault();
 
-  const payload = {
-    name: document.getElementById("member-name").value,
-    contact: document.getElementById("member-contact").value,
-    email: document.getElementById("member-email").value,
-    request: document.getElementById("member-request").value
-  };
-
-  try {
-    const res = await fetch(
-      "https://script.google.com/macros/s/AKfycbwipen4FVEMNAfL4IyaG_XLV1v0GgvRZUMRs3tK3FBXzRLbZtwIdvaMTEiB6-23G2mgWg/exec",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      }
-    );
-
-    const data = await res.json();
-
-    if (data.success) {
-      document.getElementById("prayer-request-form").style.display = "none";
-      document.getElementById("thank-you-message").style.display = "block";
-      e.target.reset();
-    } else {
-      alert("Server error. Please try again.");
-      console.error(data);
-    }
-
-  } catch (err) {
-    alert("Network error. Please check your connection.");
-    console.error(err);
-  }
-
-  return false;
-}
-</script>
 
 <style>
 /* ========== SERVICES CONTAINER ========== */
@@ -115,43 +76,6 @@ async function submitPrayerForm(e) {
   background: #145c45;
 }
 
-/* ========== PRAYER FORM ========== */
-.prayer-form {
-  padding: 20px 15px 25px;
-  background: #f9fafb;
-  border-top: 1px solid #e0e0e0;
-  margin-top: 15px;
-}
-
-.prayer-form h5 {
-  text-align: center;
-  margin-bottom: 15px;
-  font-size: 16px;
-  color: #0b3d2e;
-}
-
-.prayer-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #333;
-}
-
-.prayer-form input,
-.prayer-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.prayer-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
 
 .prayer-form button {
   width: 100%;
@@ -243,38 +167,11 @@ async function submitPrayerForm(e) {
   <p>Intercessory prayer for individuals and the church.</p>
   <p><strong>Time:</strong> Tuesdays, 5:00 – 7:00 PM</p>
 
-  <button class="btn" onclick="document.getElementById('prayer-request-form').scrollIntoView({behavior:'smooth'})">
-    Request Prayer
+  <button class="btn" onclick="window.location.href='prayer request.html'">
+  Send Your Prayer Request
   </button>
 
-  <div class="prayer-form" id="prayer-request-form">
-    <h5>SUBMIT YOUR PRAYER REQUEST</h5>
-
-    <form onsubmit="return submitPrayerForm(event)">
-      <label>Full Name (optional)</label>
-      <input id="member-name">
-
-      <label>Telephone (optional)</label>
-      <input id="member-contact">
-
-      <label>Email (optional)</label>
-      <input id="member-email">
-
-      <label>Your Prayer Request</label>
-      <textarea id="member-request" required></textarea>
-
-      <button type="submit">Submit Request</button>
-    </form>
-  </div>
-</div>
-
-<!-- THANK YOU -->
-<div class="service-box" id="thank-you-message" style="display:none;">
-  <img src="prayer.jpg">
-  <h3>THANK YOU</h3>
-  <p>Your prayer request has been received. Our prayer team is praying for you.</p>
-</div>
-
+  
 </div>
 <div class="service-box">
   <img src="youths.jpg">
