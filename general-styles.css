@@ -136,7 +136,7 @@ body {
 }
 
 .info-card {
-    background: white;
+    background: gold;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 3px 7px rgba(0,0,0,0.1);
@@ -148,7 +148,7 @@ body {
 
 /* SOCIAL LINKS */
 .social-links a {
-    color: purple;
+    color: red;
     font-weight: bold;
 }
 
